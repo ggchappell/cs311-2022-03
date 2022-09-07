@@ -1,6 +1,7 @@
-// timeofday.cpp  UNFINISHED
+// timeofday.cpp
 // Glenn G. Chappell
-// 2022-09-02
+// Started: 2022-09-02
+// Updated: 2022-09-07
 //
 // For CS 311 Fall 2022
 // Source for class TimeOfDay
@@ -24,6 +25,8 @@ void TimeOfDay::getTime(int & hh,
                         int & mm,
                         int & ss) const
 {
+    assert(0 <= _secs && _secs < 24*60*60);
+
     ss = _secs % 60;
     mm = (_secs / 60) % 60;
     hh = _secs / 60 / 60;
@@ -51,6 +54,8 @@ void TimeOfDay::setTime(int hh,
 ostream & operator<<(ostream & str,
                      const TimeOfDay & obj)
 {
+    assert(0 <= obj._secs && obj._secs < 24*60*60);
+
     int hh, mm, ss;
     obj.getTime(hh, mm, ss);
 
