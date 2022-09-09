@@ -1,6 +1,7 @@
 // timeofday_main.cpp
 // Glenn G. Chappell
-// 2022-09-02
+// Started: 2022-09-02
+// Updated: 2022-09-08
 //
 // For CS 311 Fall 2022
 // Simple main program for class TimeOfDay
@@ -35,6 +36,7 @@ int main()
 
     const TimeOfDay t1;
     TimeOfDay t2(23, 59, 59);
+    TimeOfDay t3;
 
     cout << "\" 0:00:00\"   - \"" << t1 << "\"" << "\n";
 
@@ -58,7 +60,8 @@ int main()
 
     t2.setTime(8,03,59);
     ++t2;
-    cout << "\" 8:04:00\"   - \"" << t2 << "\"" << "\n";
+    t3 = t2;
+    cout << "\" 8:04:00\"   - \"" << t3 << "\"" << "\n";
 
     cout << "\n";
 
