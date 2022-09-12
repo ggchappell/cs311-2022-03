@@ -57,7 +57,8 @@ int main()
          i != SIZE;
          ++i)
     {
-        cout << carr[i] << " ";
+        IntArray::value_type v = carr[i];
+        cout << v << " ";
     }
     cout << "\n" << endl;
 
