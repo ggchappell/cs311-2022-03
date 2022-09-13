@@ -1,4 +1,4 @@
-// intarray.h  UNFINISHED
+// intarray.h
 // Glenn G. Chappell
 // 2022-09-12
 //
@@ -9,6 +9,8 @@
 
 #ifndef FILE_INTARRAY_H_INCLUDED
 #define FILE_INTARRAY_H_INCLUDED
+
+#include <cstddef>  // For std::size_t
 
 
 // *********************************************************************
@@ -24,18 +26,55 @@ class IntArray {
 // ***** IntArray: Types *****
 public:
 
+    using size_type = std::size_t;  // Unsigned type for size of array,
+                                    //  indices
+    using value_type = int;         // Type of item in this container
 
 // ***** IntArray: Ctors, dctor, op= *****
 public:
 
+    // Ctor from size
+    // Not an implicit type conversion.
+    explicit IntArray(size_type size)
+        :_arrayptr(new value_type[size])
+    {}
+
+    // Dctor
+    ~IntArray()
+    {
+        delete [] _arrayptr;
+    }
+
+    // No default ctor, copy/move ops
+    IntArray() = delete;
+    IntArray(const IntArray & other) = delete;
+    IntArray & operator=(const IntArray & other) = delete;
+    IntArray(IntArray && other) = delete;
+    IntArray & operator=(IntArray && other) = delete;
 
 // ***** IntArray: General public operators *****
 public:
 
+    // op[] - non-const & const
+    // Parameter index must be in the range [0, size), where size is the
+    // parameter passed to the ctor.
+    value_type & operator[](size_type index)
+    {
+        return _arrayptr[index];
+    }
+    const value_type & operator[](size_type index) const
+    {
+        return _arrayptr[index];
+    }
 
 // ***** IntArray: Data members *****
 private:
 
+    value_type * _arrayptr;  // Pointer to our dynamic array
+                             //   Points to memory allocate with new [],
+                             //   owned by *this, large enough to hold
+                             //   "size" value-type objects ("size" is
+                             //   the parameter passed to the ctor).
 
 };  // End class IntArray
 
