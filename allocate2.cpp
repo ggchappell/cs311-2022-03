@@ -36,6 +36,7 @@ public:
 
     // Ctor from string
     // Store given string as name. Print name with a message to cout.
+    // May throw std::bad_alloc.
     Named(const string & name)
         :_name(name)
     {
@@ -48,7 +49,7 @@ public:
             )
         {
             cout << _name << " CREATION FAILED; THROWING\n";
-            throw std::bad_alloc();
+            throw bad_alloc();
         }
 
         // ******************************************************
@@ -82,16 +83,17 @@ private:
 
 
 // allocate2
-// Attempt to allocate two Named objects, with named "Object A" and
+// Attempt to allocate two Named objects, with names "Object A" and
 // "Object B". Return pointers to these in nptra, nptrb. Throws
-// std::bad_alloc if either allocation is unsuccessful.
+// exception thrown by "new" (derived class of std::bad_alloc) if either
+// allocation is unsuccessful.
 // Pre: None.
 // Post:
 //     nptra points to object with name "Object A", allocated with new,
 //      ownership transfered to caller.
 //     nptrb points to object with name "Object B", allocated with new,
 //      ownership transfered to caller.
-// May throw std::bad_alloc.
+// May throw std::bad_alloc or derived class.
 void allocate2(Named * & nptra,
                Named * & nptrb)
 {
@@ -115,16 +117,16 @@ int main()
         allocate2Successful = true;
         cout << "Call to \"allocate2\" successful\n";
     }
-    catch (std::bad_alloc & e)
+    catch (bad_alloc & e)
     {
         allocate2Successful = false;
-        cout << "Call to \"allocate2\" NOT successful;"
-             << " exception caught\n";
+        cout << "Call to \"allocate2\" NOT successful\n";
+        cout << "  exception caught [what = '" << e.what() << "']\n";
     }
-    cout << "\n";
 
     if (allocate2Successful)
     {
+        cout << "\n";
         cout << "Deallocating objects from \"allocate2\":"
              << " Object A, Object B\n";
         delete npa;

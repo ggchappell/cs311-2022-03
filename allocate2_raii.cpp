@@ -39,6 +39,7 @@ public:
 
     // Ctor from string
     // Store given string as name. Print name with a message to cout.
+    // May throw std::bad_alloc.
     Named(const string & name)
         :_name(name)
     {
@@ -51,7 +52,7 @@ public:
             )
         {
             cout << _name << " CREATION FAILED; THROWING\n";
-            throw std::bad_alloc();
+            throw bad_alloc();
         }
 
         // ******************************************************
@@ -85,9 +86,10 @@ private:
 
 
 // allocate2
-// Attempt to allocate two Named objects, with named "Object A" and
+// Attempt to allocate two Named objects, with names "Object A" and
 // "Object B". Return unique_ptrs to these in nptra, nptrb. Throws
-// std::bad_alloc if either allocation is unsuccessful.
+// exception thrown by "new" (derived class of std::bad_alloc) if either
+// allocation is unsuccessful.
 // Pre: None.
 // Post:
 //     nptra points to object with name "Object A".
@@ -113,15 +115,15 @@ int main()
         allocate2(npa, npb);
         cout << "Call to \"allocate2\" successful\n";
     }
-    catch (std::bad_alloc & e)
+    catch (bad_alloc & e)
     {
-        cout << "Call to \"allocate2\" NOT successful;"
-             << " exception caught\n";
+        cout << "Call to \"allocate2\" NOT successful\n";
+        cout << "  exception caught [what = '" << e.what() << "']\n";
     }
-    cout << endl;
 
-    // Deallocation is automatic; nothing more to do
+    // Deallocation is automatic; nothing more for us to do
     // (Isn't RAII great?)
+    cout << endl;
 
     // Wait for user
     cout << "Press ENTER to quit ";
