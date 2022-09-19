@@ -1,4 +1,4 @@
-// fibo_first.cpp  UNFINISHED
+// fibo_first.cpp
 // Glenn G. Chappell
 // 2022-09-19
 //
@@ -31,8 +31,15 @@ using bignum = uint_fast64_t;  // fastest unsigned w/ >= 64 bits
 // Does not throw.
 bignum fibo(int n)
 {
-    // TODO: WRITE THIS!!!
-    return bignum(n);  // Dummy return
+    // BASE CASE
+
+    if (n <= 1)
+        return bignum(n);
+
+    // RECURSIVE CASE
+
+    // Invariant: n >= 2
+    return fibo(n-2) + fibo(n-1);
 }
 
 
@@ -51,8 +58,7 @@ void userPause()
 // Uses fibo.
 int main()
 {
-    const int MAXINDEX =  30;  // TEMPORARY!!! REPLACE WITH LINE BELOW.
-    //const int MAXINDEX =  93;  // Greatest i for which we compute F(i)
+    const int MAXINDEX = 93;  // Greatest i for which we compute F(i)
 
     // Print Fibonacci numbers
     cout << "Fibonacci Numbers" << "\n";
