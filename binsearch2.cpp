@@ -1,6 +1,7 @@
 // binsearch2.cpp
 // Glenn G. Chappell
-// 2022-09-21
+// Started: 2022-09-21
+// Updated: 2022-09-26
 //
 // For CS 311 Fall 2022
 // Binary Search
@@ -10,6 +11,10 @@
 using std::cout;
 using std::endl;
 using std::cin;
+#include <cstdint>
+using std::int_fast64_t;
+#include <algorithm>
+using std::is_sorted;
 #include <utility>
 using std::pair;
 #include <vector>
@@ -26,6 +31,12 @@ using std::distance;
 using std::advance;
 #include <cassert>
 // For assert
+
+
+// Type bignum
+// Type of values used for large-ish integers
+// Should be a signed integer type.
+using bignum = int_fast64_t;
 
 
 // binSearch
@@ -86,9 +97,9 @@ bool binSearch(FDIter first,      // [first, last) is range to search
 //      otherwise.
 // Throws what & when binSearch throws. If binSearch does not throw,
 // then tryBinSearch does not throw.
-void tryBinSearch(const vector<int> & data,  // Data to search in
-                  int key,                   // Key to search for
-                  bool expect)               // Expected result
+void tryBinSearch(const vector<bignum> & data,  // Data to search in
+                  bignum key,                   // Key to search for
+                  bool expect)                  // Expected result
 {
     // Do search
     cout << "Doing Binary Search for: " << key;
@@ -147,7 +158,7 @@ string intWithSep(IntType num,               // Integer to stringify
 int main()
 {
     // Size of dataset - CHANGE THIS! - MUST BE GREATER THAN 100
-    const size_t SIZE = 200'000'000;
+    const size_t SIZE = 500'000'000;
 
     assert(SIZE > 100);
 
@@ -157,16 +168,17 @@ int main()
          << " ... ";
     cout.flush();
 
-    vector<int> data;
+    vector<bignum> data;
     data.reserve(SIZE);
     for (size_t i = 0; i < SIZE; ++i)
-        data.push_back(10*int(i));
+        data.push_back(10*bignum(i));
+    assert(is_sorted(begin(data), end(data)));
 
     cout << "DONE" << "\n";
     cout << endl;
 
     // List of searches to do
-    const vector<pair<int, bool>> searchfor {
+    const vector<pair<bignum, bool>> searchfor {
         { 10,            true },  // search key, expect success?
         { 1000,          true },
         { (SIZE/10)*10,  true },
