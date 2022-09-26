@@ -1,4 +1,4 @@
-// seqsearch_compare.cpp  UNFINISHED
+// seqsearch_compare.cpp
 // Glenn G. Chappell
 // 2022-09-26
 //
@@ -137,8 +137,12 @@ bool seqSearch(FDIter first,      // [first, last) is range to search
                const ValueType & findme)
                                   // value to find
 {
-    // TODO: WRITE THIS!!!
-    return false;  // Dummy return
+    for (auto iter = first; iter != last; ++iter)
+    {
+        if (*iter == findme)
+            return true;
+    }
+    return false;
 }
 
 
