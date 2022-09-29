@@ -732,7 +732,7 @@ int main(int argc,
     }
 
     // If we want to do something else here, then we need to check
-    // context.shouldExit() first.
+    // dtcontext.shouldExit() first.
 
     // Wait for user
     std::cout << "Press ENTER to quit ";
