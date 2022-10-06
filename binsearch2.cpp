@@ -28,7 +28,7 @@ using std::to_string;
 using std::begin;
 using std::end;
 using std::distance;
-using std::advance;
+using std::next;
 #include <cassert>
 // For assert
 
@@ -74,8 +74,7 @@ bool binSearch(FDIter first,      // [first, last) is range to search
     // RECURSIVE CASE
 
     // Get iterator to pivot: item in middle position of range
-    auto pivotiter = first;
-    advance(pivotiter, size/2);
+    auto pivotiter = next(first, size/2);
 
     if (findme < *pivotiter)
     {   // Recursively search first half of range
