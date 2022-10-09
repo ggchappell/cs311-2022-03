@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # important.py
 # Glenn G. Chappell
-# 2022-10-02
+# Started: 2022-10-02
+# Updated: 2022-10-09
 #
 # For CS 311 Fall 2022
 """Print the sum from Analysis of Algorithms slides.
@@ -27,15 +28,14 @@ def print_results(n):
     total = a+b+c+d
 
     # For right-aligning all numbers
-    # (We like f-strings, but they won't do a variable field width.)
-    formatstr = "{:>" + str(len(str(total))) + "}"
+    field_width = len(str(total))
 
     # Print all values
-    print("n log_10(n) " + formatstr.format(a))
-    print("72 n        " + formatstr.format(b))
-    print("3 n^2       " + formatstr.format(c))
-    print("936         " + formatstr.format(d))
-    print("SUM         " + formatstr.format(total))
+    print(f"n log_10(n) {a:>{field_width}}")
+    print(f"72 n        {b:>{field_width}}")
+    print(f"3 n^2       {c:>{field_width}}")
+    print(f"936         {d:>{field_width}}")
+    print(f"SUM         {total:>{field_width}}")
 
 
 # Main program
