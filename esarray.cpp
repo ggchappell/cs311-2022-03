@@ -1,8 +1,8 @@
 // esarray.cpp  UNFINISHED
-// VERSION 2
+// VERSION 3
 // Glenn G. Chappell
 // Started: 2022-10-18
-// Updated: 2022-10-19
+// Updated: 2022-10-21
 //
 // For CS 311 Fall 2022
 // Source for class ESArray
