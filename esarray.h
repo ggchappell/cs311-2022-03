@@ -1,8 +1,8 @@
 // esarray.h  UNFINISHED
-// VERSION 4
+// VERSION 5
 // Glenn G. Chappell
 // Started: 2022-10-18
-// Updated: 2022-10-24
+// Updated: 2022-10-25
 //
 // For CS 311 Fall 2022
 // Header for class ESArray
@@ -31,14 +31,15 @@
 //   - Revise ctor from size, copy ctor accordingly.
 //   - Write move ctor.
 //   - Mark various functions as noexcept.
+// - v5:
+//   - Move func defs to source file: copy & move ops, resize, insert,
+//     erase, swap.
 
 #ifndef FILE_ESARRAY_H_INCLUDED
 #define FILE_ESARRAY_H_INCLUDED
 
 #include <cstddef>
 // For std::size_t
-#include <algorithm>
-// For std::copy
 
 
 // *********************************************************************
@@ -82,42 +83,19 @@ public:
 
     // Copy ctor
     // Strong Guarantee
-    ESArray(const ESArray & other)
-        :_size(other.size()),
-         _data(other.size() == 0 ? nullptr
-                                 : new value_type[other.size()])
-    {
-        std::copy(other.begin(), other.end(), begin());
-        // The above call to std::copy does not throw, since it copies
-        // int values. But if value_type is changed, then the call may
-        // throw, in which case this copy ctor may need to be rewritten.
-    }
+    ESArray(const ESArray & other);
 
     // Move ctor
     // No-Throw Guarantee
-    ESArray(ESArray && other) noexcept
-        :_size(other._size),
-         _data(other._data)
-    {
-        other._size = 0;
-        other._data = nullptr;
-    }
+    ESArray(ESArray && other) noexcept;
 
     // Copy assignment operator
     // ??? Guarantee
-    ESArray & operator=(const ESArray & other)
-    {
-        // TODO: WRITE THIS!!!
-        return *this; // DUMMY
-    }
+    ESArray & operator=(const ESArray & other);
 
     // Move assignment operator
     // No-Throw Guarantee
-    ESArray & operator=(ESArray && other) noexcept
-    {
-        // TODO: WRITE THIS!!!
-        return *this; // DUMMY
-    }
+    ESArray & operator=(ESArray && other) noexcept;
 
     // Dctor
     // No-Throw Guarantee
@@ -183,27 +161,16 @@ public:
 
     // resize
     // ??? Guarantee
-    void resize(size_type newsize)
-    {
-        // TODO: WRITE THIS!!!
-    }
+    void resize(size_type newsize);
 
     // insert
     // ??? Guarantee
     iterator insert(iterator pos,
-                    const value_type & item)
-    {
-        // TODO: WRITE THIS!!!
-        return begin();  // DUMMY
-    }
+                    const value_type & item);
 
     // erase
     // ??? Guarantee
-    iterator erase(iterator pos)
-    {
-        // TODO: WRITE THIS!!!
-        return begin();  // DUMMY
-    }
+    iterator erase(iterator pos);
 
     // push_back
     // ??? Guarantee
@@ -221,10 +188,7 @@ public:
 
     // swap
     // No-Throw Guarantee
-    void swap(ESArray & other) noexcept
-    {
-        // TODO: WRITE THIS!!!
-    }
+    void swap(ESArray & other) noexcept;
 
 // ***** ESArray: data members *****
 private:
