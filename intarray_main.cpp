@@ -3,7 +3,7 @@
 // 2022-09-09
 //
 // For CS 311 Fall 2022
-// Simple main program for class IntArray
+// Simple program using class IntArray
 
 #include "intarray.h"  // for class IntArray
 #include "intarray.h"  // Double-inclusion check (for testing only)

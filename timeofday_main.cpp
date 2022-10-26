@@ -4,7 +4,7 @@
 // Updated: 2022-09-08
 //
 // For CS 311 Fall 2022
-// Simple main program for class TimeOfDay
+// Simple program using class TimeOfDay
 
 #include "timeofday.h"  // For class TimeOfDay
 #include "timeofday.h"  // Double-inclusion check (for testing only)
@@ -28,7 +28,7 @@ void userPause()
 // TimeOfDay. Prints expected and actual results.
 int main()
 {
-    cout << "Simple main program for class TimeOfDay" << "\n";
+    cout << "Simple program using class TimeOfDay" << "\n";
     cout << "Each line below shows what should result, "
          << "and then what actually results." << "\n";
     cout << "This is NOT a thorough test program." << "\n";

@@ -3,7 +3,7 @@
 // 2022-10-25
 //
 // For CS 311 Fall 2022
-// Simple program using ESArray
+// Simple program using class ESArray
 // Requires esarray.h, esarray.cpp
 
 #include "esarray.h"  // For class ESArray
@@ -37,8 +37,8 @@ int main()
     const ESArray::size_type ASIZE = 20;  // Size of our array
 
     // Print intro message
-    cout << "*** Using an ESArray ***\n";
-    cout << "Size: " << ASIZE << "\n\n";
+    cout << "Simple program using an ESArray object\n";
+    cout << "Size of ESArray: " << ASIZE << "\n\n";
 
     // Create an ESArray and put some data in it.
     ESArray data(ASIZE);
@@ -46,7 +46,8 @@ int main()
     assert(!data.empty());
     for (ESArray::size_type i = 0; i < data.size(); ++i)
     {
-        data[i] = 2*i < ASIZE ? 20*((ASIZE-1)/2-i) : 20*(ASIZE-1-i)+10;
+        auto val = 2*i < ASIZE ? 20*((ASIZE-1)/2-i) : 20*(ASIZE-1-i)+10;
+        data[i] = ESArray::value_type(val);
     }
 
     // Print initial data
