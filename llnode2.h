@@ -11,6 +11,9 @@
 #ifndef FILE_LLNODE2_H_INCLUDED
 #define FILE_LLNODE2_H_INCLUDED
 
+#include <cstddef>
+// For std::size_t
+
 
 // *********************************************************************
 // struct LLNode2 - Struct definition
@@ -74,10 +77,10 @@ struct LLNode2 {
 // NOTE: The above are the requirements for LLNode2<ValType>; no member
 // functions of ValType are actually used here.
 template <typename ValType>
-size_t size(const LLNode2<ValType> * head)
+std::size_t size(const LLNode2<ValType> * head)
 {
     auto p = head;       // Iterates through list
-    size_t counter = 0;  // Number of nodes so far
+    std::size_t counter = 0;  // Number of nodes so far
     while (p != nullptr)
     {
         p = p->_next;
