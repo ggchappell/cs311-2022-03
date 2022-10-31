@@ -1,6 +1,7 @@
 // use_list2.cpp
 // Glenn G. Chappell
-// 2022-10-28
+// Started: 2022-10-28
+// Updated: 2022-10-31
 //
 // For CS 311 Fall 2022
 // Singly Linked List example using smart pointers: create & find size
@@ -30,7 +31,7 @@ void userPause()
 // Creates a Linked List and finds its size.
 int main()
 {
-    const size_t THESIZE = 507;  // Size of list to create
+    const size_t THESIZE = 800007;  // Size of list to create
 
     // Create empty list
     cout << "Creating empty Linked List" << "\n";
