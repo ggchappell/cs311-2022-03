@@ -1,4 +1,4 @@
-// rpneval.h  UNFINISHED
+// rpneval.h
 // Glenn G. Chappell
 // 2022-11-02
 //
@@ -20,6 +20,8 @@
 // For std::domain_error
 // For std::out_of_range
 // For std::overflow_error
+#include <cstdlib>
+// For std::atoi
 
 
 // Note on "inline"
@@ -92,7 +94,49 @@ inline
 void rpnEval(std::stack<int> & s,
              const std::string & token)
 {
-    // TODO: WRITE THIS!!!
+    if (token == "c" || token == "C")
+    {
+        std::stack<int>().swap(s);  // Clear stack
+        return;
+    }
+
+    if (isInteger(token))
+    {
+        s.push(std::atoi(token.c_str()));
+        return;
+    }
+
+    if (!isBinop(token))
+    {
+        throw std::domain_error("Unknown command: \"" + token + "\"");
+    }
+
+    // We have a binary arithmetic operator: +, -, *, /
+
+    if (s.size() < 2)
+    {
+        throw std::out_of_range("Stack underflow in \"" + token
+                              + "\" operation");
+    }
+
+    int b = s.top();
+    s.pop();
+    int a = s.top();
+    s.pop();
+
+    if (token == "+")
+        s.push(a + b);
+    else if (token == "-")
+        s.push(a - b);
+    else if (token == "*")
+        s.push(a * b);
+    else  // token == "/"
+    {
+        if (b == 0)
+            throw std::overflow_error("Division by zero");
+        else
+            s.push(a / b);
+    }
 }
 
 
