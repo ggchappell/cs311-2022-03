@@ -98,7 +98,7 @@ int main()
         Thing { 72, "Dog" },
         Thing { 72, "Ape" },
         Thing { 25, "Bat" },
-        Thing { 99, "Yak" },
+        Thing { 19, "Yak" },
         Thing { 67, "Owl" },
         Thing { 84, "Dog" },
         Thing { 31, "Emu" },
