@@ -6,6 +6,7 @@
 // Demo of a typical hash function for integers
 // Hashing code is based on MurmrHash3 by Austin Appleby 2008 (public
 //  domain)
+// http://github.com/aappleby/smhasher
 
 #include <iostream>
 using std::cout;
@@ -24,6 +25,7 @@ using std::uint32_t;
 // An integer hash function. Takes and returns uint32_t.
 //
 // Based on MurmurHash3 by Austin Appleby 2008 (public domain)
+// http://github.com/aappleby/smhasher
 //
 // Does not throw (No-Throw Guarantee)
 uint32_t hashFunc(uint32_t key)
