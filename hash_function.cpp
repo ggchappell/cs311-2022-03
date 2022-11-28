@@ -52,7 +52,7 @@ uint32_t hashFunc(uint32_t key)
 // Does not throw (No-Throw Guarantee)
 void printBinary(uint32_t value)
 {
-    uint32_t mask = 0x80000000UL;
+    uint32_t mask = 0x80000000U;
     while (mask != 0)
     {
         if ((value & mask) != 0)
