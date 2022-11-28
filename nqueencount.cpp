@@ -17,8 +17,6 @@ using std::string;
 using std::getline;
 #include <sstream>
 using std::istringstream;
-#include <cstdlib>
-using std::abs;
 
 
 using BoardType = vector<int>;  // Holds queen locs on a chessboard
@@ -171,11 +169,12 @@ int nQueenCount(int n)
 bool getInt(const string & prompt,  // Print this before doing input
             int & n)                // Number we input
 {
-    // Prompt & input chessboard size, with retry on bad input
+    // Prompt & input integer, with retry on bad input
     while (true)
     {
         bool founderror = false;
         cout << prompt;
+        cout.flush();
         string line;
         getline(cin, line);
         if (!cin)
@@ -196,7 +195,7 @@ bool getInt(const string & prompt,  // Print this before doing input
 
         if (!founderror)
             break;
-        cout << endl;
+        cout << "\n";
         cout << "Try again; please type an integer" << endl;
     }
 
@@ -205,15 +204,14 @@ bool getInt(const string & prompt,  // Print this before doing input
 
 
 // Main program
-// Repeatedly input a number n and print number of n-Queen solutions.
+// Repeatedly input an integer n and print number of n-Queen solutions.
 // Terminates on fatal error in input or n <= 0.
 int main()
 {
     while (true)
     {
         // Print explanation
-        cout << "n-Queen Counter" << endl;
-        cout << endl;
+        cout << "n-Queen Counter\n\n";
 
         // Prompt & get chessboard size
         int n;
@@ -222,11 +220,10 @@ int main()
             break;
 
         // Print number of solutions to n-Queens Problem
-        cout << endl;
+        cout << "\n";
         cout << "Number of n-Queen Solutions for "
-             << n << " x " << n << " chessboard:" << endl;
-        cout << nQueenCount(n) << endl;
-        cout << endl;
+             << n << " x " << n << " chessboard:\n";
+        cout << "  " << nQueenCount(n) << "\n\n";
     }
 }
 
