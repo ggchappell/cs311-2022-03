@@ -29,12 +29,12 @@ using std::uint32_t;
 //
 // This is a condensed rewrite of function MurmurHash3_x86_32 from the
 // above file, with the input data being 4 bytes long and a default
-// value given for the salt (called "seed" in the original code).
+// value used for the salt (parameter "seed" in the original code).
 //
 // Does not throw (No-Throw Guarantee)
-uint32_t hashFunc(uint32_t key,
-                  uint32_t salt = 0xdeadbeefU)  // Value chosen by GGC
+uint32_t hashFunc(uint32_t key)
 {
+    const uint32_t salt = 0xdeadbeefU;  // Value chosen by GGC
     uint32_t h = key * 0xcc9e2d51U;
     h = (h << 15) | (h >> 17);
     h *= 0x1b873593U;
