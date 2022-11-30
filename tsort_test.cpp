@@ -4,7 +4,7 @@
 //
 // For CS 311 Fall 2022
 // Test program for function template treesort
-// For Project 7, Exercise A
+// For Assignment 7, Exercise A
 // Uses the "doctest" unit-testing framework, version 2
 // Requires doctest.h, tsort.h
 
