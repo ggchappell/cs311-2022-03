@@ -39,7 +39,7 @@ void treesort(FDIter first, FDIter last)
     using Value = typename std::iterator_traits<FDIter>::value_type;
 
     // THE FOLLOWING IS DUMMY CODE. IT WILL PASS ALL TESTS, BUT IT DOES
-    // NOT MEET THE REQUIREMENTS OF THE PROJECT.
+    // NOT MEET THE REQUIREMENTS OF THE ASSIGNMENT.
     std::vector<Value> buff(std::distance(first, last));
     std::move(first, last, buff.begin());
     std::stable_sort(buff.begin(), buff.end());
